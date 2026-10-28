@@ -11,10 +11,20 @@
         .logo { color: #45f3ff; font-size: 24px; font-weight: bold; }
         nav a { color: #ffffff; text-decoration: none; margin-left: 20px; font-weight: 500; }
         nav a:hover { color: #45f3ff; }
-        .hero { text-align: center; padding: 60px 20px; background: linear-gradient(rgba(11,12,16,0.8), #0b0c10); }
-        .hero h1 { font-size: 42px; color: #ffffff; margin-bottom: 10px; }
-        .hero p { color: #66fcf1; font-size: 18px; }
-        .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+        .hero { text-align: center; padding: 40px 20px; background: linear-gradient(rgba(11,12,16,0.8), #0b0c10); }
+        .hero h1 { font-size: 36px; color: #ffffff; margin-bottom: 10px; }
+        .hero p { color: #66fcf1; font-size: 16px; }
+        
+        /* Video Section Styling */
+        .video-section { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .video-section h2 { color: #45f3ff; margin-bottom: 20px; text-align: center; font-size: 24px; }
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .video-card { background-color: #1f2833; border-radius: 8px; overflow: hidden; border: 1px solid #45f3ff; padding: 15px; }
+        .video-card h3 { color: #ffffff; margin-bottom: 10px; font-size: 18px; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 4px; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+        .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 20px; max-width: 1200px; margin: 0 auto; }
         .card { background-color: #1f2833; border-radius: 8px; padding: 20px; border: 1px solid #45f3ff; text-align: center; }
         .card h3 { color: #ffffff; margin-bottom: 10px; }
         .btn { display: inline-block; background-color: #45f3ff; color: #0b0c10; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 15px; }
@@ -35,7 +45,31 @@
 
     <section class="hero">
         <h1>Welcome to the Ultimate Anime & Donghua Hub</h1>
-        <p>Trending reviews, epic breakdowns, and exclusive original fan art.</p>
+        <p>Trending reviews, epic trailers, and exclusive original fan art.</p>
+    </section>
+
+    <!-- New Trailer Stream Section -->
+    <section class="video-section">
+        <h2>Trending Official Trailers</h2>
+        <div class="video-grid">
+            
+            <!-- Donghua Trailer Card -->
+            <div class="video-card">
+                <h3>Link Click (Donghua Showcase)</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://youtube.com" title="Link Click Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Anime Trailer Card -->
+            <div class="video-card">
+                <h3>Chainsaw Man (Anime Showcase)</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://youtube.com" title="Chainsaw Man Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+
+        </div>
     </section>
 
     <div class="content-grid">
