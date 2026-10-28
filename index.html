@@ -3,91 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anime & Donghua Nexus</title>
+    <title>Nexus Hub - Stream Anime & Donghua</title>
     <style>
+        /* Core Dark Theme Layout */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: #0b0c10; color: #c5c6c7; }
-        header { background-color: #1f2833; padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #45f3ff; }
-        .logo { color: #45f3ff; font-size: 24px; font-weight: bold; }
-        nav a { color: #ffffff; text-decoration: none; margin-left: 20px; font-weight: 500; }
-        nav a:hover { color: #45f3ff; }
-        .hero { text-align: center; padding: 40px 20px; background: linear-gradient(rgba(11,12,16,0.8), #0b0c10); }
-        .hero h1 { font-size: 36px; color: #ffffff; margin-bottom: 10px; }
-        .hero p { color: #66fcf1; font-size: 16px; }
+        body { background-color: #0b0c10; color: #c5c6c7; line-height: 1.6; }
         
-        /* Video Section Styling */
-        .video-section { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        .video-section h2 { color: #45f3ff; margin-bottom: 20px; text-align: center; font-size: 24px; }
-        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 40px; }
-        .video-card { background-color: #1f2833; border-radius: 8px; overflow: hidden; border: 1px solid #45f3ff; padding: 15px; }
-        .video-card h3 { color: #ffffff; margin-bottom: 10px; font-size: 18px; }
-        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 4px; }
-        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        /* Navigation Bar */
+        header { background-color: #1f2833; padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #45f3ff; position: sticky; top: 0; z-index: 1000; }
+        .logo { color: #45f3ff; font-size: 22px; font-weight: bold; letter-spacing: 1px; }
+        nav a { color: #ffffff; text-decoration: none; margin-left: 15px; font-weight: 500; font-size: 14px; }
+        nav a:hover { color: #45f3ff; }
+        
+        /* Hero Branding Section */
+        .hero { text-align: center; padding: 50px 20px; background: linear-gradient(rgba(11,12,16,0.85), #0b0c10); border-bottom: 1px solid #1f2833; }
+        .hero h1 { font-size: 32px; color: #ffffff; margin-bottom: 10px; }
+        .hero p { color: #66fcf1; font-size: 15px; max-width: 600px; margin: 0 auto; }
+        
+        /* Content Sections */
+        .main-container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        section { margin-bottom: 40px; }
+        section h2 { color: #45f3ff; margin-bottom: 20px; font-size: 22px; border-left: 4px solid #66fcf1; padding-left: 10px; }
+        
+        /* Video Streaming Grid */
+        .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; }
+        .media-card { background-color: #1f2833; border-radius: 8px; overflow: hidden; border: 1px solid #1f2833; padding: 12px; transition: 0.3s; }
+        .media-card:hover { border-color: #45f3ff; }
+        .media-card h3 { color: #ffffff; margin-bottom: 10px; font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        
+        /* Responsive Embedded Player (16:9 Aspect Ratio) */
+        .player-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 6px; background-color: #000000; margin-bottom: 12px; }
+        .player-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        
+        /* Interactive Buttons */
+        .btn-group { display: flex; gap: 10px; }
+        .btn { flex: 1; text-align: center; display: inline-block; background-color: #1f2833; color: #45f3ff; padding: 8px 12px; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 13px; border: 1px solid #45f3ff; transition: 0.2s; }
+        .btn:hover { background-color: #45f3ff; color: #0b0c10; }
+        .btn-primary { background-color: #45f3ff; color: #0b0c10; }
+        .btn-primary:hover { background-color: #66fcf1; }
 
-        .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 20px; max-width: 1200px; margin: 0 auto; }
-        .card { background-color: #1f2833; border-radius: 8px; padding: 20px; border: 1px solid #45f3ff; text-align: center; }
-        .card h3 { color: #ffffff; margin-bottom: 10px; }
-        .btn { display: inline-block; background-color: #45f3ff; color: #0b0c10; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 15px; }
-        .btn:hover { background-color: #66fcf1; }
+        /* AI Wallpaper Image Gallery Grid */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+        .gallery-card { background-color: #1f2833; border-radius: 6px; overflow: hidden; border: 1px solid #1f2833; padding: 8px; text-align: center; }
+        .gallery-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 4px; margin-bottom: 8px; background-color: #0b0c10; }
+        .gallery-card p { font-size: 12px; color: #ffffff; margin-bottom: 8px; }
     </style>
 </head>
 <body>
 
+    <!-- Main Navigation Header -->
     <header>
         <div class="logo">NEXUS HUB</div>
         <nav>
-            <a href="#">Home</a>
-            <a href="#">Anime</a>
-            <a href="#">Donghua</a>
-            <a href="#">AI Gallery</a>
+            <a href="#anime">Anime</a>
+            <a href="#donghua">Donghua</a>
+            <a href="#gallery">AI Gallery</a>
         </nav>
     </header>
 
+    <!-- Welcome Section -->
     <section class="hero">
-        <h1>Welcome to the Ultimate Anime & Donghua Hub</h1>
-        <p>Trending reviews, epic trailers, and exclusive original fan art.</p>
+        <h1>Stream Anime & Donghua On Demand</h1>
+        <p>Watch trending series directly in your browser and download custom high-quality AI wallpapers.</p>
     </section>
 
-    <!-- Fixed Trailer Stream Section -->
-    <section class="video-section">
-        <h2>Trending Official Trailers</h2>
-        <div class="video-grid">
-            
-            <!-- Donghua Trailer Card -->
-            <div class="video-card">
-                <h3>Link Click (Donghua Showcase)</h3>
-                <div class="video-wrapper">
-                    <iframe src="https://youtube.com" title="Link Click Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <!-- Main Layout Container -->
+    <div class="main-container">
+
+        <!-- SECTION 1: ANIME STREAMS -->
+        <section id="anime">
+            <h2>Trending Anime Streaming</h2>
+            <div class="media-grid">
+                
+                <!-- Anime Card 1 -->
+                <div class="media-card">
+                    <h3>Chainsaw Man - Episode 01</h3>
+                    <div class="player-wrapper">
+                        <!-- Replace the SRC link inside quotes below with your Video Cloud embed link later -->
+                        <iframe src="https://youtube.com" allowfullscreen></iframe>
+                    </div>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-primary">Server 1</a>
+                        <a href="#" class="btn">Download HD</a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Anime Trailer Card -->
-            <div class="video-card">
-                <h3>Chainsaw Man (Anime Showcase)</h3>
-                <div class="video-wrapper">
-                    <iframe src="https://youtube.com" title="Chainsaw Man Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <!-- Anime Card 2 -->
+                <div class="media-card">
+                    <h3>Kaiju No. 8 - Episode 01</h3>
+                    <div class="player-wrapper">
+                        <iframe src="https://youtube.com" allowfullscreen></iframe>
+                    </div>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-primary">Server 1</a>
+                        <a href="#" class="btn">Download HD</a>
+                    </div>
                 </div>
+
             </div>
+        </section>
 
-        </div>
-    </section>
+        <!-- SECTION 2: DONGHUA STREAMS -->
+        <section id="donghua">
+            <h2>Popular Donghua Streaming</h2>
+            <div class="media-grid">
+                
+                <!-- Donghua Card 1 -->
+                <div class="media-card">
+                    <h3>Link Click - Episode 01</h3>
+                    <div class="player-wrapper">
+                        <!-- Replace the SRC link inside quotes below with your Video Cloud embed link later -->
+                        <iframe src="https://youtube.com" allowfullscreen></iframe>
+                    </div>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-primary">Server 1</a>
+                        <a href="#" class="btn">Download HD</a>
+                    </div>
+                </div>
 
-    <div class="content-grid">
-        <div class="card">
-            <h3>Trending Donghua Reviews</h3>
-            <p>From Link Click to Soul Land, explore deep dives into the best Chinese animation.</p>
-            <a href="#" class="btn">Explore Donghua</a>
-        </div>
-        <div class="card">
-            <h3>Anime Season Breakdowns</h3>
-            <p>Is the latest arc living up to the hype? Read our seasonal analysis here.</p>
-            <a href="#" class="btn">Read Reviews</a>
-        </div>
-        <div class="card">
-            <h3>Original Digital Wallpapers</h3>
-            <p>Download stunning custom characters generated directly by our studio.</p>
-            <a href="#" class="btn">Go to Gallery</a>
-        </div>
+                <!-- Donghua Card 2 -->
+                <div class="media-card">
+                    <h3>Soul Land V - Episode 01</h3>
+                    <div class="player-wrapper">
+                        <iframe src="https://youtube.com" allowfullscreen></iframe>
+                    </div>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-primary">Server 1</a>
+                        <a href="#" class="btn">Download HD</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3: LEONARDO AI FAN ART & WALLPAPERS -->
+        <section id="gallery">
+            <h2>Exclusive Anime & Donghua Wallpapers</h2>
+            <div class="gallery-grid">
+                
+                <!-- Wallpaper Item 1 -->
+                <div class="gallery-card">
+                    <!-- Paste your Leonardo AI generated image download link in the src below -->
+                    <img src="" alt="Anime Cyberpunk Hero">
+                    <p>Cyberpunk Warrior</p>
+                    <a href="#" class="btn">Get Wallpaper</a>
+                </div>
+
+                <!-- Wallpaper Item 2 -->
+                <div class="gallery-card">
+                    <img src="" alt="Donghua Cultivator Graphic">
+                    <p>Cultivator Spirit</p>
+                    <a href="#" class="btn">Get Wallpaper</a>
+                </div>
+
+                <!-- Wallpaper Item 3 -->
+                <div class="gallery-card">
+                    <img src="" alt="Anime Mecha Mech Icon">
+                    <p>Mecha Horizon</p>
+                    <a href="#" class="btn">Get Wallpaper</a>
+                </div>
+
+                <!-- Wallpaper Item 4 -->
+                <div class="gallery-card">
+                    <img src="" alt="Donghua Fantasy Landscape">
+                    <p>Ancient Realm</p>
+                    <a href="#" class="btn">Get Wallpaper</a>
+                </div>
+
+            </div>
+        </section>
+
     </div>
 
 </body>
