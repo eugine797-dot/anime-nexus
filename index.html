@@ -9,39 +9,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
         body { background-color: #0b0c10; color: #c5c6c7; line-height: 1.6; overflow-x: hidden; }
         
-        /* Crunchyroll Style Splash Screen Intro */
-        #splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: #0b0c10;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.6s ease-out, visibility 0.6s;
-            opacity: 1;
-            visibility: visible;
-        }
-        .splash-logo {
-            color: #45f3ff;
-            font-size: 42px;
-            font-weight: 900;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            text-shadow: 0 0 20px rgba(69, 243, 255, 0.6);
-            animation: cinematicIntro 2.2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
-            opacity: 0;
-        }
-        @keyframes cinematicIntro {
-            0% { transform: scale(0.7); filter: blur(10px); opacity: 0; }
-            30% { transform: scale(1.02); filter: blur(0); opacity: 1; }
-            75% { transform: scale(1); filter: blur(0); opacity: 1; letter-spacing: 6px; }
-            100% { transform: scale(1.08); filter: blur(2px); opacity: 0; }
-        }
-
         /* Navigation Bar */
         header { background-color: #1f2833; padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #45f3ff; position: sticky; top: 0; z-index: 1000; }
         .logo { color: #45f3ff; font-size: 22px; font-weight: bold; letter-spacing: 1px; }
@@ -62,7 +29,7 @@
         .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; }
         .media-card { background-color: #1f2833; border-radius: 8px; overflow: hidden; border: 1px solid #1f2833; padding: 12px; transition: 0.3s; }
         .media-card:hover { border-color: #45f3ff; }
-        .media-card h3 { color: #ffffff; margin-bottom: 10px; font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .media-grid.card h3 { color: #ffffff; margin-bottom: 10px; font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         
         /* Responsive Embedded Player (16:9 Aspect Ratio) */
         .player-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 6px; background-color: #000000; margin-bottom: 12px; }
@@ -83,11 +50,6 @@
     </style>
 </head>
 <body>
-
-    <!-- Epic Cinematic Splash Intro Component -->
-    <div id="splash-screen">
-        <div class="splash-logo">Nexus Hub</div>
-    </div>
 
     <!-- Main Navigation Header -->
     <header>
@@ -210,7 +172,5 @@
 
     </div>
 
-    <!-- Hardwired Fail-Safe Timer Script -->
-    <script>
-        function removeSplash() {
-    
+</body>
+</html>
