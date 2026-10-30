@@ -7,8 +7,39 @@
     <style>
         /* Core Dark Theme Layout */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: #0b0c10; color: #c5c6c7; line-height: 1.6; }
+        body { background-color: #0b0c10; color: #c5c6c7; line-height: 1.6; overflow-x: hidden; }
         
+        /* Crunchyroll Style Splash Screen Intro */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #0b0c10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease-out, visibility 0.8s;
+        }
+        .splash-logo {
+            color: #45f3ff;
+            font-size: 48px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(69, 243, 255, 0.6);
+            animation: cinematicIntro 2.5s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+            opacity: 0;
+        }
+        @keyframes cinematicIntro {
+            0% { transform: scale(0.6); filter: blur(10px); opacity: 0; }
+            40% { transform: scale(1.05); filter: blur(0); opacity: 1; }
+            80% { transform: scale(1); filter: blur(0); opacity: 1; letter-spacing: 8px; }
+            100% { transform: scale(1.1); filter: blur(2px); opacity: 0; }
+        }
+
         /* Navigation Bar */
         header { background-color: #1f2833; padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #45f3ff; position: sticky; top: 0; z-index: 1000; }
         .logo { color: #45f3ff; font-size: 22px; font-weight: bold; letter-spacing: 1px; }
@@ -50,6 +81,11 @@
     </style>
 </head>
 <body>
+
+    <!-- Epic Cinematic Splash Intro Component -->
+    <div id="splash-screen">
+        <div class="splash-logo">Nexus Hub</div>
+    </div>
 
     <!-- Main Navigation Header -->
     <header>
@@ -141,10 +177,9 @@
                 
                 <!-- Wallpaper Item 1 -->
                 <div class="gallery-card">
-                    <!-- Fully updated direct .jpg asset image source link -->
-                    <img src="https://cdn.leonardo.ai/users/e1fe0e7a-ec94-4799-bf0c-03305a3d5521/generations/1f1d3838-9d5e-6930-adfd-fc0cccad5686/lucid-origin_Klein_Moretti_from_Lord_of_the_Mysteries_elegant_gentleman_anime_style_black_top-0.jpg" alt="Klein Moretti - The Fool">
+                    <img src="https://leonardo.ai" alt="Klein Moretti - The Fool">
                     <p>Klein Moretti - The Fool</p>
-                    <a href="https://cdn.leonardo.ai/users/e1fe0e7a-ec94-4799-bf0c-03305a3d5521/generations/1f1d3838-9d5e-6930-adfd-fc0cccad5686/lucid-origin_Klein_Moretti_from_Lord_of_the_Mysteries_elegant_gentleman_anime_style_black_top-0.jpg" target="_blank" class="btn">Get Wallpaper</a>
+                    <a href="https://leonardo.ai" target="_blank" class="btn">Get Wallpaper</a>
                 </div>
 
                 <!-- Wallpaper Item 2 -->
@@ -173,5 +208,8 @@
 
     </div>
 
-</body>
-</html>
+    <!-- Automated Splash Screen Dismiss Script -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+        
